@@ -1,0 +1,12 @@
+Package: osteometrika
+Title: osteometrika: an R package for human osteological data analysis 
+Version: 0.1.0
+Authors@R: c(
+    person("David", "Navega", role = c("aut", "cre"), 
+    email = "dsnavega@gmail.com", comment = c(ORCID = "0000-0003-4495-3762")))
+Description: Statistical tools for human osteological data analysis
+Depends: R (>= 3.1.2)
+License: GPL (>= 2) + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
