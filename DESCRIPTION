@@ -6,7 +6,9 @@ Authors@R: c(
     email = "dsnavega@gmail.com", comment = c(ORCID = "0000-0003-4495-3762")))
 Description: Statistical tools for human osteological data analysis
 Depends: R (>= 3.1.2)
-License: GPL (>= 2) + file LICENSE
+License: GPL-3 + file LICENSE
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
+URL: https://github.com/dsnavega/osteometrika
+BugReports: https://github.com/dsnavega/osteometrika/issues
