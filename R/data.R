@@ -7,12 +7,12 @@
 #' \describe{
 #' \item{TO}{Transverse Organization, a factor with 5 levels.}
 #' \item{ST}{Surface Texture, a factor vector with 5 levels.}
-#' \item{MI}{Surface Texture, a factor vector with 3 levels.}
-#' \item{MA}{Surface Texture, a factor vector with 3 levels.}
-#' \item{AP}{Surface Texture, a factor vector with 3 levels.}
-#' \item{PHASE}{Surface Texture, a factor vector with 7 levels defining the modal
+#' \item{MI}{Microporosity, a factor vector with 3 levels.}
+#' \item{MA}{Macroporosity, a factor vector with 3 levels.}
+#' \item{AP}{Apical changes, a factor vector with 3 levels.}
+#' \item{PHASE}{Phase, a factor vector with 7 levels defining the modal
 #' age-related stage of the ilaic auricular surface}
-#' \item{SCORE}{Surface Texture, a numeric vector with the sum of ST, TO, MI,
+#' \item{SCORE}{Sum Score, a numeric vector with the sum of ST, TO, MI,
 #'  MA, AP raw scores}
 #' \item{SEX}{Sex, a factor vector with 2 levels.}
 #' \item{AGE}{Age-at-Death, a numeric vector }
