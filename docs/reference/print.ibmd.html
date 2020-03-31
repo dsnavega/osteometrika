@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Technical Error of Measurement — tem • osteometrika</title>
+<title>Print method for ibdm — print.ibmd • osteometrika</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Technical Error of Measurement — tem" />
-<meta property="og:description" content="Compute technical error of measurement and associated normalized versions" />
+<meta property="og:title" content="Print method for ibdm — print.ibmd" />
+<meta property="og:description" content="Print method for ibdm" />
 
 
 
@@ -108,55 +108,31 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Technical Error of Measurement</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dsnavega/osteometrika/blob/master/R/temS3.R'><code>R/temS3.R</code></a></small>
-    <div class="hidden name"><code>tem.Rd</code></div>
+    <h1>Print method for ibdm</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dsnavega/osteometrika/blob/master/R/ibmdS3.R'><code>R/ibmdS3.R</code></a></small>
+    <div class="hidden name"><code>print.ibmd.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Compute technical error of measurement and associated normalized versions</p>
+    <p>Print method for ibdm</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tem</span>(<span class='no'>x</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>4</span>)</pre>
+    <pre class="usage"><span class='co'># S3 method for ibmd</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>a data.frame of numeric vectors containing multiple replicated
-observation performed by the same rater/observer or replicated observations
-performed by different observers.</p></td>
+      <td><p>an object of class "ibmd"</p></td>
     </tr>
     <tr>
-      <th>digits</th>
-      <td><p>number of decimal places (rounding)</p></td>
+      <th>...</th>
+      <td><p>...</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>a list with the following components:</p>
-<dt>TEM</dt><dd><p>Technical error of measurement (in the units of x)</p></dd>
-<dt>rTEM</dt><dd><p>Relative technical error of measurement (as percentage)</p></dd>
-<dt>R</dt><dd><p>Coefficient of Reliability (dimensionless)</p></dd>
-<dt>n</dt><dd><p>an integer with the number of valid observations</p></dd>
-<dt>k</dt><dd><p>an integer indicating the number of observers or replications</p></dd>
-
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
-
-    <p>rTEM, Relative TEM, represents a normalization of TEM using the mean of x.
-R, Coefficient of Reliability or Variation, represents a normalization of TEM
-using the variance of x.</p>
-<p>Missing values are handle by row-wise deletion.</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
-
-    <p>SJ Ulijaszek, DA Kerr. 1999. Anthropometric measurement error and
-the assessment of nutritional status. British Journal of Nutrition, 82:
-165 - 177.</p>
-<p>CJ Utermohle, SL Zegura, GM Heathcote. 1983. Multiple Observers, Humidity,
-and Choice of Precision Statistics: Factors Influencing Craniometric Data
-Quality. American Journal of Physical Anthropology, 61: 85 -95.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

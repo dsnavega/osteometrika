@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Technical Error of Measurement — tem • osteometrika</title>
+<title>Joint and Chance-corrected Agreement for Unordered and Ordered Factors — agreement • osteometrika</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Technical Error of Measurement — tem" />
-<meta property="og:description" content="Compute technical error of measurement and associated normalized versions" />
+<meta property="og:title" content="Joint and Chance-corrected Agreement for Unordered and Ordered Factors — agreement" />
+<meta property="og:description" content="Joint and Chance-corrected Agreement for Unordered and Ordered Factors" />
 
 
 
@@ -108,25 +108,35 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Technical Error of Measurement</h1>
-    <small class="dont-index">Source: <a href='https://github.com/dsnavega/osteometrika/blob/master/R/temS3.R'><code>R/temS3.R</code></a></small>
-    <div class="hidden name"><code>tem.Rd</code></div>
+    <h1>Joint and Chance-corrected Agreement for Unordered and Ordered Factors</h1>
+    <small class="dont-index">Source: <a href='https://github.com/dsnavega/osteometrika/blob/master/R/agreementS3.R'><code>R/agreementS3.R</code></a></small>
+    <div class="hidden name"><code>agreement.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Compute technical error of measurement and associated normalized versions</p>
+    <p>Joint and Chance-corrected Agreement for Unordered and Ordered Factors</p>
     </div>
 
-    <pre class="usage"><span class='fu'>tem</span>(<span class='no'>x</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>4</span>)</pre>
+    <pre class="usage"><span class='fu'>agreement</span>(<span class='no'>x</span>, <span class='kw'>weights</span> <span class='kw'>=</span> <span class='st'>"linear"</span>, <span class='kw'>random</span> <span class='kw'>=</span> <span class='no'>T</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>4</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>a data.frame of numeric vectors containing multiple replicated
-observation performed by the same rater/observer or replicated observations
-performed by different observers.</p></td>
+      <td><p>an n by data.frame containing n observations performed by m
+observers for a given attribute of interest.</p></td>
+    </tr>
+    <tr>
+      <th>weights</th>
+      <td><p>a character defining the weighting scheme for ordered factors.
+options are 'linear' or 'quadratic' weights. Default is 'linear'</p></td>
+    </tr>
+    <tr>
+      <th>random</th>
+      <td><p>a logical defining if the probability of expected agreement should be
+computed from totally random allocation model or from the marginals
+(as in Cohen's Kappa). Default is TRUE (totally random).</p></td>
     </tr>
     <tr>
       <th>digits</th>
@@ -136,27 +146,28 @@ performed by different observers.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>a list with the following components:</p>
-<dt>TEM</dt><dd><p>Technical error of measurement (in the units of x)</p></dd>
-<dt>rTEM</dt><dd><p>Relative technical error of measurement (as percentage)</p></dd>
-<dt>R</dt><dd><p>Coefficient of Reliability (dimensionless)</p></dd>
-<dt>n</dt><dd><p>an integer with the number of valid observations</p></dd>
-<dt>k</dt><dd><p>an integer indicating the number of observers or replications</p></dd>
+    <p>a list with the following components (ordered by relevance):</p>
+<dt>agreement</dt><dd><p>a vector with raw and chance-corrected agreement estimates</p></dd>
+<dt>balanced</dt><dd><p>balanced agreement as the mean value of detailed agreement</p></dd>
+<dt>detailed</dt><dd><p>level-specific agreement of a factor</p></dd>
+<dt>expected</dt><dd><p>probability of expected agreement</p></dd>
+<dt>p.value</dt><dd><p>significance probability of a binomial test</p></dd>
+<dt>n</dt><dd><p>number of valid observations/ratings</p></dd>
+<dt>m</dt><dd><p>number of observers/raters</p></dd>
+<dt>k</dt><dd><p>number of levels</p></dd>
+<dt>probability</dt><dd><p>a list of withprobabilities used to compute agreement</p></dd>
+<dt>ordered</dt><dd><p>a logical indicating if ordered factors were analysed</p></dd>
+<dt>scheme</dt><dd><p>weighting scheme applied</p></dd>
+<dt>weighted</dt><dd><p>a logical indicating if analysis is weighted</p></dd>
 
-    <h2 class="hasAnchor" id="note"><a class="anchor" href="#note"></a>Note</h2>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>rTEM, Relative TEM, represents a normalization of TEM using the mean of x.
-R, Coefficient of Reliability or Variation, represents a normalization of TEM
-using the variance of x.</p>
-<p>Missing values are handle by row-wise deletion.</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
-
-    <p>SJ Ulijaszek, DA Kerr. 1999. Anthropometric measurement error and
-the assessment of nutritional status. British Journal of Nutrition, 82:
-165 - 177.</p>
-<p>CJ Utermohle, SL Zegura, GM Heathcote. 1983. Multiple Observers, Humidity,
-and Choice of Precision Statistics: Factors Influencing Craniometric Data
-Quality. American Journal of Physical Anthropology, 61: 85 -95.</p>
+    <p>Current implementation generalizes the application of weighting schemes
+(ordered factors) to raw agreement computation and generalizes
+chance-corrected agreement to an arbitrary number of raters/rating sessions.
+Statistical significance is computed from a binomial test against expected
+probability of agreement and not assuming no agreement (0) as the null
+hypothesis.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

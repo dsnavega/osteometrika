@@ -3,13 +3,14 @@
 #' Compute technical error of measurement and associated normalized versions
 #'
 #' @export
-#' @importFrom stats complete.cases var
+#' @importFrom stats var na.omit
 #'
 #' @author David Navega
 #'
 #' @param x a data.frame of numeric vectors containing multiple replicated
 #' observation performed by the same rater/observer or replicated observations
 #' performed by different observers.
+#' @param digits number of decimal places (rounding)
 #'
 #' @return a list with the following components:
 #' \item{TEM}{Technical error of measurement (in the units of x)}
@@ -34,37 +35,61 @@
 #'
 #' Missing values are handle by row-wise deletion.
 #'
-TEM <- function(x) {
+tem <- function(x, digits = 4) {
 
-  condition <- is.data.frame(x)
-  if(condition) {
-    no_na <- complete.cases(x)
-    m <- x[no_na, ]
+  if (is.data.frame(x)) {
+
+    m <- na.omit(x)
     n <- nrow(m)
     k <- ncol(m)
 
-    # Technical Error of Measurement, Generalized Formula ---
+    # Technical Error of Measurement, Generalized Formula
     tem <- sqrt(sum(rowSums(m ^ 2) - ((rowSums(m) ^ 2) / k)) / (n * (k - 1)))
 
-    # Relative TEM ---
+    # Relative TEM
     rtem <- tem / mean(colMeans(m)) * 100
 
-    # Coefficient of Reliability or Variation ---
+    # Coefficient of Reliability or Variation
     r <- (tem ^ 2) / var(unlist(m))
 
-    # return
-    rout <- list(
-      TEM = tem,
-      rTEM = rtem,
-      R = 1 - r,
-      n = as.integer(n),
-      k = as.integer(k)
+    object <- structure(
+      .Data = list(
+        TEM = round(tem, digits),
+        rTEM = round(rtem, digits),
+        R = round(1 - r, digits),
+        n = as.integer(n),
+        k = as.integer(k)
+      ),
+      class = "tem"
     )
 
-    return(rout)
+    return(object)
 
   } else {
-    stop("[-] x MUST be a data.frame.")
+    stop("\n(-) x MUST be a data.frame.")
   }
 
 }
+
+
+#' Print method for tem
+#' @author David Navega
+#'
+#' @export
+#' @noRd
+#'
+#' @param x an object of class "tem"
+#' @param ... ...
+#'
+print.tem <- function(x, ...) {
+
+  cat("\nSamples:", x$n)
+  cat("\nReplicates:", x$k)
+
+  cat("\n\nTechnical Error of Measurement:\n")
+  cat("\n TEM:", x$TEM)
+  cat("\n Relative TEM (percentage):", x$rTEM)
+  cat("\n Coefficient of Reliability:",x$R)
+
+}
+

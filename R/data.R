@@ -5,15 +5,15 @@
 #'
 #' @format a data.frame with 180 rows and 9 variables:
 #' \describe{
-#' \item{TO}{Transverse Organization, a factor with 5 levels.}
-#' \item{ST}{Surface Texture, a factor vector with 5 levels.}
-#' \item{MI}{Microporosity, a factor vector with 3 levels.}
-#' \item{MA}{Macroporosity, a factor vector with 3 levels.}
-#' \item{AP}{Apical changes, a factor vector with 3 levels.}
-#' \item{PHASE}{Phase, a factor vector with 7 levels defining the modal
+#' \item{TO}{Transverse Organization, an ordered factor with 5 levels.}
+#' \item{ST}{Surface Texture, an ordered factor vector with 5 levels.}
+#' \item{MI}{Microporosity, an ordered factor vector with 3 levels.}
+#' \item{MA}{Macroporosity, an ordered factor vector with 3 levels.}
+#' \item{AP}{Apical changes, an ordered factor vector with 3 levels.}
+#' \item{PHASE}{Phase, an ordered factor vector with 7 levels defining the modal
 #' age-related stage of the ilaic auricular surface}
 #' \item{SCORE}{Sum Score, a numeric vector with the sum of ST, TO, MI,
-#'  MA, AP raw scores}
+#'  MA, AP raw scores (as integers)}
 #' \item{SEX}{Sex, a factor vector with 2 levels.}
 #' \item{AGE}{Age-at-Death, a numeric vector }
 #' }
